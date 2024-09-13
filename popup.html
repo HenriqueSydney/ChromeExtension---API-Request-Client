@@ -8,17 +8,36 @@
 <body>
   <div class="container">
     <h2>API Request Helper</h2>
-    <label for="method">Method:</label>
-    <select id="method">
-      <option value="GET">GET</option>
-      <option value="POST">POST</option>
-      <option value="PUT">PUT</option>
-      <option value="DELETE">DELETE</option>
-    </select>
-    <input type="text" id="url" placeholder="Enter API URL">
-    <textarea id="body" placeholder="Request body (JSON)"></textarea>
-    <button id="sendRequest">Send Request</button>
-    <pre id="response"></pre>
+    <div class="w-full d-flex flex-column gap-4">
+        <label for="method">Método da Requisição:</label>
+        <select id="method">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="PATCH">PATCH</option>
+          <option value="DELETE">DELETE</option>
+        </select>
+      </div>
+   
+   <div class="w-full d-flex flex-column gap-4">
+    <input type="text" id="url" placeholder="Insira a URL da requisição">
+    <textarea id="body" placeholder="Insira o body (JSON)"></textarea>
+  </div>
+    <button id="sendRequest">Enviar a requisição</button>
+    <div id="feedback" class=" d-flex w-full align-items-center justify-content-center text-weight-bold" style="display: none;"></div>
+    <div id="loading"  class=" d-flex w-full align-items-center justify-content-center text-weight-bold" style="display: none;"></div>
+    <div id="response_container" class="d-flex w-full flex-column" style="display: none;">
+      <h3>Respostas:</h3>
+      <pre id="response"></pre>
+    </div>
+    <div id="headers_container" class="d-flex w-full flex-column" style="display: none;">
+      <h3>Headers:</h3>
+      <pre id="headers"></pre>
+    </div>
+    <div id="cookies_container" class="d-flex w-full flex-column" style="display: none;">
+      <h3>Cookies:</h3>
+      <pre id="cookies"></pre>
+  </div>
   </div>
   <script src="popup.js"></script>
 </body>
