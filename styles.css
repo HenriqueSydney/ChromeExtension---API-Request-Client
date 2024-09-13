@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+  }
+  
+  .container {
+    width: 300px;
+  }
+  
+  input, textarea, select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  pre {
+    background: #f4f4f4;
+    padding: 10px;
+    overflow-x: auto;
+  }
+  
