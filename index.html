@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Request Helper</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>API Request Helper</h2>
+    <div class="tabs">
+      <div class="tab active" data-tab="request">Enviar Requisição</div>
+      <div class="tab" data-tab="auth">Definir AUTH</div>
+    </div>
+
+    <div id="request" class="tab-content active">
+      <div class="w-full d-flex flex-column gap-4">
+        <label for="method">Método da Requisição:</label>
+        <select id="method">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="PATCH">PATCH</option>
+          <option value="DELETE">DELETE</option>
+        </select>
+      </div>
+      <div class="w-full d-flex flex-column gap-4">
+        <input type="text" id="url" placeholder="Insira a URL da requisição">
+        <textarea id="body" placeholder="Insira o body (JSON)"></textarea>
+      </div>
+      <button id="sendRequest">Enviar a requisição</button>
+      <div id="feedback" class="d-flex w-full align-items-center justify-content-center text-weight-bold" style="display: none;"></div>
+      <div id="loading" class="d-flex w-full align-items-center justify-content-center text-weight-bold" style="display: none;"></div>
+      <div id="response_container" class="d-flex w-full flex-column" style="display: none;">
+        <h3>Respostas:</h3>
+        <pre id="response"></pre>
+      </div>
+      <div id="headers_container" class="d-flex w-full flex-column" style="display: none;">
+        <h3>Headers:</h3>
+        <pre id="headers"></pre>
+      </div>
+      <div id="cookies_container" class="d-flex w-full flex-column" style="display: none;">
+        <h3>Cookies:</h3>
+        <pre id="cookies"></pre>
+      </div>
+    </div>
+
+    <div id="auth" class="tab-content">
+      <div class="w-full d-flex flex-column gap-4">
+        <label for="authType">Tipo de Autenticação:</label>
+        <select id="authType">
+          <option value="none">Nenhum</option>
+          <option value="basic">Básica</option>
+          <option value="bearer">Bearer Token</option>
+        </select>
+      </div>
+      <div id="authFields">
+        <!-- Campos adicionais para AUTH aparecerão aqui -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+      });
+    });
+
+    document.getElementById('authType').addEventListener('change', (e) => {
+      const authType = e.target.value;
+      const authFields = document.getElementById('authFields');
+      authFields.innerHTML = '';
+
+      if (authType === 'basic') {
+        authFields.innerHTML = `
+          <label for="username">Username:</label>
+          <input type="text" id="username" placeholder="Insira o Username">
+          <label for="password">Password:</label>
+          <input type="password" id="password" placeholder="Insira o Password">
+        `;
+      } else if (authType === 'bearer') {
+        authFields.innerHTML = `
+          <label for="token">Bearer Token:</label>
+          <input type="text" id="token" placeholder="Insira o Bearer Token">
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -3,16 +3,32 @@
     "name": "API Request Client",
     "version": "1.0",
     "description": "A mini REST client for quick API requests.",
+    "permissions": ["storage", "tabs", "scripting", "activeTab", "nativeMessaging"],    
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
     "action": {
-      "default_popup": "popup.html",
+      
       "default_icon": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",
         "128": "icons/icon128.png"
       }
     },
-    "permissions": ["storage"],
-    "background": {
-      "service_worker": "background.js"
+    "web_accessible_resources": [
+      {
+        "resources": ["*.html", "*.js"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self';"
     }
-  }
+    
+}

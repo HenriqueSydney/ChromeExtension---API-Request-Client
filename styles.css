@@ -5,9 +5,8 @@ body {
   }
   
   .container {
-    width: 500px;
+    width: 100%;
     min-height: 500px;
-    padding: 10px;
     border-radius: 8px;
   }
   
@@ -85,4 +84,33 @@ body {
   
   .gap-4 {
     gap: 4px
+  }
+
+  .tabs {
+    display: flex;
+    cursor: pointer;
+    padding: 10px;
+    background: #f1f1f1;
+  }
+  .tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: #ddd;
+  }
+  .tab.active {
+    background: white;
+    border-top: 2px solid #007bff;
+  }
+  .tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
   }
