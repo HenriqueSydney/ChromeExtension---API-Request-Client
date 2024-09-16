@@ -3,93 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <title>API Request Helper</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/globals.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/tabs.css">
+  <link rel="stylesheet" href="styles/forms.css">
+  <link rel="stylesheet" href="styles/utilitarios.css">
+  <script src="scripts.js" defer></script>
+  <script src="index.js" defer></script>
 </head>
 <body>
   <div class="container">
-    <h2>API Request Helper</h2>
-    <div class="tabs">
-      <div class="tab active" data-tab="request">Enviar Requisição</div>
-      <div class="tab" data-tab="auth">Definir AUTH</div>
-    </div>
 
-    <div id="request" class="tab-content active">
-      <div class="w-full d-flex flex-column gap-4">
-        <label for="method">Método da Requisição:</label>
-        <select id="method">
-          <option value="GET">GET</option>
-          <option value="POST">POST</option>
-          <option value="PUT">PUT</option>
-          <option value="PATCH">PATCH</option>
-          <option value="DELETE">DELETE</option>
-        </select>
-      </div>
-      <div class="w-full d-flex flex-column gap-4">
-        <input type="text" id="url" placeholder="Insira a URL da requisição">
-        <textarea id="body" placeholder="Insira o body (JSON)"></textarea>
-      </div>
-      <button id="sendRequest">Enviar a requisição</button>
-      <div id="feedback" class="d-flex w-full align-items-center justify-content-center text-weight-bold" style="display: none;"></div>
-      <div id="loading" class="d-flex w-full align-items-center justify-content-center text-weight-bold" style="display: none;"></div>
-      <div id="response_container" class="d-flex w-full flex-column" style="display: none;">
-        <h3>Respostas:</h3>
-        <pre id="response"></pre>
-      </div>
-      <div id="headers_container" class="d-flex w-full flex-column" style="display: none;">
-        <h3>Headers:</h3>
-        <pre id="headers"></pre>
-      </div>
-      <div id="cookies_container" class="d-flex w-full flex-column" style="display: none;">
-        <h3>Cookies:</h3>
-        <pre id="cookies"></pre>
-      </div>
+    <div class="header">
+      <h2>API Request Helper</h2>
     </div>
+   
+    <div class="w-full d-flex content-container">
+      <div class="d-flex flex-column gap-4 history-container">
+        <div>
+          <div class="history-title">
+            <h3>Requests</h3>
+            <button id="add_request" class="add-request">+</button>
+          </div>
+          <div id="add_request_form" class="d-flex gap-4 align-items-center">
+            <input id="add_request_input" type="text" class="" placeholder="Descrição"/>
+            <button id="confirm_request" class="add-request">+</button>
+            <button id="close_add_request" class="remove-request">x</button>
+          </div>
+        </div>        
+        <div>
+          <ul id="list_of_requests">            
+          </ul>
+        </div>
+      </div>
+      <div class="grow-1 main-container">
+        <div class="w-full d-flex gap-4 wrap form-container">
+          <div class="grow-0">
+            <select id="method">
+              <option value="GET">GET</option>
+              <option value="POST">POST</option>
+              <option value="PUT">PUT</option>
+              <option value="PATCH">PATCH</option>
+              <option value="DELETE">DELETE</option>
+            </select>
+          </div>
+          <div class="d-flex grow-1">
+            <input class="grow-1" type="text" id="url" placeholder="Insira a URL da requisição">
+          </div>
+          <div class="grow-0">
+            <button id="sendRequest">Enviar</button>
+          </div>
+        </div>
+      
+        <div class="tabs">
+          <div class="tab active" data-tab="request">Body</div>
+          <div class="tab" data-tab="auth">AUTH</div>
+        </div>
 
-    <div id="auth" class="tab-content">
-      <div class="w-full d-flex flex-column gap-4">
-        <label for="authType">Tipo de Autenticação:</label>
-        <select id="authType">
-          <option value="none">Nenhum</option>
-          <option value="basic">Básica</option>
-          <option value="bearer">Bearer Token</option>
-        </select>
+        <div id="request" class="tab-content active">          
+          <div class="w-full">        
+            <textarea id="body" placeholder="Insira o body (JSON)"></textarea>
+          </div>  
+        </div>
+
+        <div id="auth" class="tab-content">
+          <div class="w-full d-flex flex-column gap-4">
+            <label for="authType">Tipo de Autenticação:</label>
+            <select id="authType">
+              <option value="none">Nenhum</option>
+              <option value="basic">Básica</option>
+              <option value="bearer">Bearer Token</option>
+            </select>
+          </div>
+          <div id="authFields">
+            <!-- Campos adicionais para AUTH aparecerão aqui -->
+          </div>
+        </div>
       </div>
-      <div id="authFields">
-        <!-- Campos adicionais para AUTH aparecerão aqui -->
+      <div class="response-container">
+        <div class="status-container">  
+          <div id="tag_status" class="tag">Status</div>
+          <div id="tag_time" class="tag">Time</div>
+          <div id="tag_bites" class="tag">Bytes</div>
+        </div>
+        <div class="tabs-response">
+          <div class="tab-response active" data-tab="response_tab">Response</div>
+          <div class="tab-response" data-tab="headers_tab">Headers</div>
+          <div class="tab-response" data-tab="cookies_tab">Cookies</div>
+        </div>
+        <div id="feedback" class="d-flex w-full align-items-center justify-content-center text-weight-bold" style="display: none;"></div>
+        <div id="loading" class="d-flex w-full align-items-center justify-content-center text-weight-bold" style="display: none;"></div>
+        <div id="response_tab" class="tab-response-content active">          
+          <div class="w-full">              
+            <pre id="response">
+            </pre>           
+          </div>
+        </div>
+        <div id="headers_tab" class="tab-response-content">          
+          <div class="w-full"> 
+            <div id="headers_container">          
+              <pre id="headers">
+              </pre>
+            </div>
+          </div>
+        </div>
+        <div id="cookies_tab" class="tab-response-content">          
+          <div class="w-full"> 
+            <div id="cookies_container">          
+              <pre id="cookies">
+              </pre>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
-
-  <script>
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-        tab.classList.add('active');
-        document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
-      });
-    });
-
-    document.getElementById('authType').addEventListener('change', (e) => {
-      const authType = e.target.value;
-      const authFields = document.getElementById('authFields');
-      authFields.innerHTML = '';
-
-      if (authType === 'basic') {
-        authFields.innerHTML = `
-          <label for="username">Username:</label>
-          <input type="text" id="username" placeholder="Insira o Username">
-          <label for="password">Password:</label>
-          <input type="password" id="password" placeholder="Insira o Password">
-        `;
-      } else if (authType === 'bearer') {
-        authFields.innerHTML = `
-          <label for="token">Bearer Token:</label>
-          <input type="text" id="token" placeholder="Insira o Bearer Token">
-        `;
-      }
-    });
-  </script>
+</div>
 </body>
 </html>

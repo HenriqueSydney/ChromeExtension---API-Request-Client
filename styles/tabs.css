@@ -1,0 +1,42 @@
+.tabs, .tabs-response {
+  display: flex;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #202024;
+}
+.tab, .tab-response {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  background-color: #202024;
+}
+.tab.active, .tab-response.active {
+  border-top: 1px solid #8D8D99;
+  border-left: 1px solid #8D8D99;
+  border-right: 1px solid #8D8D99;
+  background-color: #323238;
+}
+
+.tab:not(.active), .tab-response:not(.active) {
+  border-bottom: 1px solid #8D8D99;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  min-height: 400px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-response-content {
+  display: none;
+  padding: 20px;
+  min-height: 400px;
+}
+
+.tab-response-content.active {
+  display: block;
+}
