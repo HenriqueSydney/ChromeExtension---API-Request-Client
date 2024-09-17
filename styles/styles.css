@@ -55,7 +55,7 @@ button.remove-request {
   height: 35px;
   font-size: 0.875rem; 
   font-weight: 700;
-  border: 1px solid rgba(64, 0, 191, 0.7); 
+  border: 1px solid #dddde7; 
   border-radius: 100%; 
   background-color: #202024; 
   cursor: pointer;
@@ -64,6 +64,7 @@ button.remove-request {
 
 button:hover {
   background-color: rgba(106, 41, 235, 0.897);
+  border-color: rgba(106, 41, 235, 0.897);
 }
 
 
@@ -139,12 +140,18 @@ label {
   gap: 2rem;
 }
 
+
 #authFields {
   width: 100%;
+  margin-top: 30px
+}
+
+#authToken {
+  display: none;
 }
 
 .form-input-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0.875rem;
 }
@@ -185,5 +192,15 @@ label {
   height: 0;
   width: 100%;
   transition: all 0.4ms;
-  margin-top: 30px
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#list_of_requests li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+
 }

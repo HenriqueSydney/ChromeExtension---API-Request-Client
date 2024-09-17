@@ -13,6 +13,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const header = document.getElementById("headers");
         const responseField = document.getElementById("response")
         const cookie = document.getElementById("cookies")
+
+        const authType = document.getElementById("authType").value
+        
+        let headers = {
+          "Content-Type": "application/json"
+        };
+        if(authType === 'bearer'){
+          const bearerToken = document.getElementById("token").value
+          if (bearerToken) {
+            headers["Authorization"] = `Bearer ${bearerToken}`;
+          }
+        } else if (authType === 'basic'){
+          const username = document.getElementById("username").value
+          const password = document.getElementById("password").value
+          if (username && password) {
+            const basicToken = btoa(`${username}:${password}`);
+            headers["Authorization"] = `Basic ${basicToken}`;
+          }
+        }
     
         loading.innerHTML = "Carregando...";
         loading.style.display = "flex";
@@ -24,9 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           let options = {
             method,
-            headers: {
-                "Content-Type": "application/json"
-              }
+            headers
           };
       
           if (body && method !== "GET") {
@@ -64,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           const contentType = response.headers.get('Content-Type');
-          console.log(contentType)
+     
           if (contentType && contentType.includes('application/json')) {      
             result = await response.json();  
             responseField.textContent = JSON.stringify(result, null, 2);      

@@ -23,13 +23,17 @@ function showModal() {
     <iframe id="popup-content" style="height: 100%; width: 100%"></iframe>
     <div style="position: absolute; top: 10px; left: 10px">
       <button id="close-button" style="
-        padding: 8px 12px; 
-        font-size: 1rem; 
-        border: 1px solid rgba(64, 0, 191, 0.7); 
-        border-radius: 20px; 
-        background-color: transparent; 
+        padding: 4px; 
+        width: 35px;
+        height: 35px;
+        font-size: 0.875rem; 
+        font-weight: 700;
+        border: 1px solid #dddde7; 
+        border-radius: 100%; 
+        background-color: #202024; 
         cursor: pointer;
         transition: background-color 0.4s;
+        color: #FAFAFA
       ">x</button>
     </div>
   `;    
