@@ -1,6 +1,6 @@
 # API Request Helper - Extensão para Google Chrome
 
-![Modal da Extensão](./imagens/1.png)
+![Modal da Extensão](./images/1.png)
 
 ## 1. Introdução (Português)
 O **API Request Helper** é um cliente REST simples e leve, projetado para realizar requisições HTTP diretamente no navegador Google Chrome. Esta extensão é ideal para desenvolvedores que desejam testar endpoints em desenvolvimento ou analisar respostas de APIs externas de maneira rápida, sem a necessidade de instalar softwares como Insomnia ou Postman.
