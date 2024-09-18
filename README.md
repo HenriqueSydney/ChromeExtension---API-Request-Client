@@ -25,7 +25,7 @@ A extensão fornece uma forma prática para:
   2. O sistema permite inserir o corpo da requisição (POST, PUT).
   3. O usuário envia a requisição.
   4. A resposta é exibida na tela.
-
+![Modal da Extensão](./images/3.png)
 ### RF002 – Exibir Cabeçalhos de Resposta HTTP
 - **Prioridade**: Essencial  
 - **Descrição**: Exibir os cabeçalhos da resposta HTTP.  
@@ -54,8 +54,16 @@ A extensão fornece uma forma prática para:
   1. O usuário adiciona uma nova requisição e preenche os parâmetros.
   2. O sistema salva a requisição.
 
+### RF006 – Permitir Request com Configuração de Autorização
+- **Prioridade**: Desejável  
+- **Descrição**: O sistema deve permitir a criação de request com o header de Autorization.
+- **Fluxo**:
+  1.	O usuário informa o tipo de AUTH (Basic ou Bearer Token);
+  2.	O usuário preenche as credenciais;
+  3.	O sistema insere nas requisições as credenciais, conforme o tipo selecionado pelo usuário;
+  4.	O sistema salva para a request criada as configurações realizadas
+![Modal da Extensão](./images/8.png)
 ---
-
 # API Request Helper - Google Chrome Extension
 
 ## 1. Introduction (English)
@@ -81,7 +89,7 @@ This extension provides a convenient way to:
   2. The system allows adding a request body for supported methods (POST, PUT).
   3. The user sends the request.
   4. The response is displayed on the screen.
-
+![Modal da Extensão](./images/3.png)
 ### RF002 – Display HTTP Response Headers
 - **Priority**: Essential  
 - **Description**: Display the headers of the HTTP response.  
@@ -109,3 +117,12 @@ This extension provides a convenient way to:
 - **Flow**:
   1. The user adds a new request and fills in the parameters.
   2. The system saves the request.
+ 
+### RF006 – Requests with Authorization
+- **Prioridade**: Desirable  
+- **Descrição**: Allow users to make requests with Authorization.
+- **Fluxo**:
+  1.	Users seletcs AUTH Type (Basic or Bearer Token);
+  2.	Users fill the credantials form;
+  3.	The systema include the credentials in the request;
+![Modal da Extensão](./images/8.png)
