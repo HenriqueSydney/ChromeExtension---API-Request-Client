@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("sendRequest").addEventListener("click", async () => {      
+      console.log('Button clicked');
         const method = document.getElementById("method").value;
         const url = document.getElementById("url").value;
         let body = document.getElementById("body").value;
@@ -89,14 +90,14 @@ document.addEventListener("DOMContentLoaded", () => {
             responseField.textContent = await response.text(); 
           }
     
-          const headers = response.headers      
+          const responseHeaders = response.headers      
     
           loading.innerHTML = "";
           loading.style.display = "none";
     
               
           let headersText = '';
-          headers.forEach((value, name) => {
+          responseHeaders.forEach((value, name) => {
             headersText += `${name}: ${value}\n`;
           });
     

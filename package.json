@@ -1,15 +1,19 @@
 {
   "name": "chromeextension---api-request-client",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "background.js",
   "scripts": {
-    "test": "jest"
+    "test": "vitest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.10.0",
+    "@playwright/test": "^1.47.1",
+    "@types/node": "^22.5.5",
+    "@vitest/browser": "^2.1.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -19,10 +23,9 @@
     "eslint-plugin-react": "^7.36.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.9.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^25.0.0",
     "prettier": "^3.3.3",
-    "text-encoding": "^0.7.0"
+    "text-encoding": "^0.7.0",
+    "vitest": "^2.1.1"
   }
 }
